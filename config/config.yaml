@@ -1,0 +1,16 @@
+app: wallet-api
+stack: api
+db:
+  walletDB:
+    conn_string: "postgres://admin:admin@localhost:5432/Bank"
+    use_pgbouncer: true
+    pool_min_conns: 2
+    pool_max_conns: 5
+    pool_health_check_period: 10s
+    shutdown_timeout: 10s
+server:
+  port: 8080
+  read_header_timeout: 5s
+  read_timeout: 15s
+  write_timeout: 15s
+  idle_timeout: 15s

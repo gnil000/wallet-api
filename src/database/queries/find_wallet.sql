@@ -1,0 +1,1 @@
+select balance from wallet where id = $1;

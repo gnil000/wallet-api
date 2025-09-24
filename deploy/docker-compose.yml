@@ -1,0 +1,26 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: wallet-api
+    env_file:
+      - ./config.env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-wallet
+    restart: always
+
+  postgres-wallet:
+    image: postgres:15
+    container_name: postgres-wallet
+    env_file:
+      - ./config.env
+    volumes:
+      - postgres_data_wallet:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data_wallet:
